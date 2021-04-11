@@ -1,7 +1,9 @@
 var saveBtn = document.querySelector('.saveBtn')
 var inputTask = document.querySelector('#task-input')
 
-  saveBtn.addEventListener('click', function(event) {
+
+    //saveBtn.addEventListener('click', function(event) { $(this) click works better
+    $(this).click(function(event) {
     event.preventDefault();
   
     var task = document.querySelector('#task-input').value;
@@ -24,30 +26,43 @@ loadTasks();
 
 
 
-var saveBtn = document.querySelector('.saveBtn')
-var inputTask = document.querySelector('#task-input')
 
-  saveBtn.addEventListener('click', function(event) {
-    event.preventDefault();
+
+
+
+
+
+
+
+
+
+
+
+
+
+// var saveBtn = document.querySelector('.saveBtn')
+// var inputTask = document.querySelector('#task-input')
+
+//   saveBtn.addEventListener('click', function(event) {
+//     event.preventDefault();
   
-    var task = document.querySelector('#task-input').value;
+//     var task = document.querySelector('#task-input').value;
 
   
     
-      // Save email and password to localStorage using `setItem()`
-      localStorage.setItem('task', JSON.stringify(task));
-  });
+//       // Save email and password to localStorage using `setItem()`
+//       localStorage.setItem('task', JSON.stringify(task));
+//   });
 
 
-var loadTasks = function() {
-    task = JSON.parse(localStorage.getItem('task'))
-    inputTask.textContent = task;
+// var loadTasks = function() {
+//     task = JSON.parse(localStorage.getItem('task'))
+//     inputTask.textContent = task;
     
     
-}  
+// }  
 
-loadTasks();
-
+// loadTasks();
 
 
 
