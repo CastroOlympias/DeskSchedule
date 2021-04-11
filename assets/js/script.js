@@ -1,5 +1,5 @@
-var saveBtn = document.querySelector('.saveBtn')
-var inputTask = document.querySelector('#task-input')
+var saveBtn = document.getElementById('saveBtn')
+var inputTask = document.getElementById('task-input')
 
 
 //saveBtn.addEventListener('click', function(event) { $(this).click works better to auto save after edit
@@ -7,7 +7,7 @@ $(this).click(function(event) {
     event.preventDefault();
   
     // This will save the userinput task item into local storage
-    var task = document.querySelector('#task-input').value;
+    var task = document.getElementById('task-input').value;
     localStorage.setItem('task', JSON.stringify(task));
 });
 
