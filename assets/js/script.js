@@ -2,24 +2,19 @@ var saveBtn = document.querySelector('.saveBtn')
 var inputTask = document.querySelector('#task-input')
 
 
-    //saveBtn.addEventListener('click', function(event) { $(this) click works better
-    $(this).click(function(event) {
+//saveBtn.addEventListener('click', function(event) { $(this).click works better to auto save after edit
+$(this).click(function(event) {
     event.preventDefault();
   
+    // This will save the userinput task item into local storage
     var task = document.querySelector('#task-input').value;
+    localStorage.setItem('task', JSON.stringify(task));
+});
 
-  
-    
-      // Save email and password to localStorage using `setItem()`
-      localStorage.setItem('task', JSON.stringify(task));
-  });
-
-
+// This will make sure your tasks stored in local storage will be display on the webpage
 var loadTasks = function() {
     task = JSON.parse(localStorage.getItem('task'))
     inputTask.textContent = task;
-    
-    
 }  
 
 loadTasks();
