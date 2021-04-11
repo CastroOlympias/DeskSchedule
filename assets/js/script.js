@@ -1,34 +1,6 @@
-// Save task input into local storage
-var taskInput = document.querySelector('#task-input');
 var saveBtn = document.querySelector('.saveBtn')
-var userEmailSpan = document.querySelector('#user-email');
+var inputTask = document.querySelector('#task-input')
 
-//console.log(taskInput);
-
-var loadTasks = function() {
-    tasks = JSON.parse(localStorage.getItem("tasks"));
-  
-    // if nothing in localStorage, create a new object to track all task status arrays
-    if (!tasks) {
-      tasks = {
-        toDo: [],
-        inProgress: [],
-        inReview: [],
-        done: []
-      };
-    }
-  
-    // loop over object properties
-    $.each(tasks, function(list, arr) {
-      // then loop over sub-array
-      arr.forEach(function(task) {
-        createTask(task.text, task.date, list);
-      });
-    });
-  };
-  
-  renderLastRegistered();
-  
   saveBtn.addEventListener('click', function(event) {
     event.preventDefault();
   
@@ -37,24 +9,44 @@ var loadTasks = function() {
   
     
       // Save email and password to localStorage using `setItem()`
-      localStorage.setItem('task', task);
-   
-      // Render the last registered email and password
-      renderLastRegistered();
-    
+      localStorage.setItem('task', JSON.stringify(task));
   });
 
 
+var loadTasks = function() {
+    task = JSON.parse(localStorage.getItem('task'))
+    inputTask.textContent = task;
+    
+    
+}  
+
+loadTasks();
 
 
 
+var saveBtn = document.querySelector('.saveBtn')
+var inputTask = document.querySelector('#task-input')
+
+  saveBtn.addEventListener('click', function(event) {
+    event.preventDefault();
+  
+    var task = document.querySelector('#task-input').value;
+
+  
+    
+      // Save email and password to localStorage using `setItem()`
+      localStorage.setItem('task', JSON.stringify(task));
+  });
 
 
+var loadTasks = function() {
+    task = JSON.parse(localStorage.getItem('task'))
+    inputTask.textContent = task;
+    
+    
+}  
 
-
-
-
-
+loadTasks();
 
 
 
