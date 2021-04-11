@@ -1,5 +1,7 @@
-var saveBtn = document.getElementById('saveBtn')
-var inputTask = document.getElementById('task-input')
+//var saveBtn = document.getElementById('saveBtn')
+var inputTaskSix = document.getElementById('task-input-06')
+var inputTaskSeven = document.getElementById('task-input-07')
+
 
 
 //saveBtn.addEventListener('click', function(event) { $(this).click works better to auto save after edit
@@ -7,18 +9,23 @@ $(this).click(function(event) {
     event.preventDefault();
   
     // This will save the userinput task item into local storage
-    var task = document.getElementById('task-input').value;
-    localStorage.setItem('task', JSON.stringify(task));
+    var task06 = document.getElementById('task-input-06').value;
+    localStorage.setItem('task06', JSON.stringify(task06));
+
+    var task07 = document.getElementById('task-input-07').value;
+    localStorage.setItem('task07', JSON.stringify(task07));
 });
 
 // This will make sure your tasks stored in local storage will be display on the webpage
 var loadTasks = function() {
-    task = JSON.parse(localStorage.getItem('task'))
-    inputTask.textContent = task;
+    task06 = JSON.parse(localStorage.getItem('task06'))
+    inputTaskSix.textContent = task06;
+
+    task07 = JSON.parse(localStorage.getItem('task07'))
+    inputTaskSeven.textContent = task07;
 }  
 
 loadTasks();
-
 
 
 
