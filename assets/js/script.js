@@ -19,6 +19,15 @@ var inputTask20 = document.getElementById('task-input-20')
 var inputTask21 = document.getElementById('task-input-21')
 
 
+
+var auditTime = function() {
+    
+    inputTask06.setAttribute("style", "background-color: green;");
+    //alert("short on time")
+}
+
+
+
 //saveBtn.addEventListener('click', function(event) { $(this).click works better to auto save after edit one click outside of box
 // This will save the userinput task item into local storage
 $(this).click(function(event) {
@@ -129,4 +138,24 @@ var loadTasks = function() {
 
 loadTasks();
 
-console.log(inputTask06);
+
+// experimenting with the code below to try and implement features for having warning colors of due items
+
+auditTime();
+
+var inputTask06 = '06:00';
+var militaryTime = 'hh:mm';
+var convertedTime = moment(inputTask06, militaryTime);
+
+
+console.log(convertedTime.format('HH:mm'));
+
+console.log(convertedTime.toNow());
+console.log(convertedTime.diff(moment(), 'hour'));
+
+
+
+
+
+// console.log(timeAudit)
+// console.log(inputTask06);
