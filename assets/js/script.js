@@ -20,15 +20,8 @@ console.log(time)
 
 const hourly = time;
 // console.log(hourly)
-// console.log(hourly)
-
-
-
-// first setup for adding make shift time in id, but can't do match against a string, so I used the other one below, then concatenated with the time id that uses this array to add':00 at the end to make it look like a time readout instead of just 01,02,03 etc
-// timeSchedule = ['00:00', '01:00', '02:00', '03:00', '04:00', '05:00', '06:00', '07:00', '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00']
 
 timeSchedule = [00, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
-
 
 const scheduler = document.querySelector('.container')
 
@@ -57,26 +50,25 @@ const create = function () {
         saveBtn.className = 'col-sm-1 saveBtn'
         scheduleRow.appendChild(saveBtn)
 
-        // console.log(scheduleTimeBlock.id)
+        const lockIcon = document.createElement('span')
+        lockIcon.className = 'oi oi-lock-locked'
+        saveBtn.appendChild(lockIcon)
+
 
         const expired = function () {
-            // console.log(scheduleTimeBlock.id)
 
-            // prepping match formula to prepare if statements for coloration of textarea elements
+            // math formula to set 3 conditions, of passed due, within 2 hours and beyond, to set element coloration of red, yellow and green
 
             console.log(`Current hour ${hourly}:00`)
             const whenExpires = scheduleTimeBlock.id- hourly
             console.log(`Next scheduledd event ${scheduleTimeBlock.id}:00`)
             console.log(`Hours until this expires ${whenExpires}:00`)
 
-
-            
-
             if (whenExpires <= 0) {
                 // alert(`${scheduleTimeBlock.id} is passed due`)
                 scheduleTimeText.setAttribute("style", "background-color: red;");
             }
-            else if (whenExpires <= 2)  {
+            else if (whenExpires <= 3)  {
                 scheduleTimeText.setAttribute("style", "background-color: yellow;");
             } else {
                 // alert(`${scheduleTimeBlock.id} is comming up`)
