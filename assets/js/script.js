@@ -12,16 +12,22 @@ const currentTime = function formatDate(date) {
     if (day.length < 2)
         day = '0' + day;
 
-    return [month, day, year].join('/') + ' ' + [hour, minute, second].join(':');
+    return [hour].join(':');
 }
 
 const time = currentTime(new Date());
 console.log(time)
 
 const hourly = time;
-console.log(hourly)
+// console.log(hourly)
+// console.log(hourly)
 
-timeSchedule = ['01:00', '02:00', '03:00', '04:00', '05:00', '06:00', '07:00', '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', ' 14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00', '00:00']
+
+
+// first setup for adding make shift time in id, but can't do match against a string, so I used the other one below, then concatenated with the time id that uses this array to add':00 at the end to make it look like a time readout instead of just 01,02,03 etc
+// timeSchedule = ['00:00', '01:00', '02:00', '03:00', '04:00', '05:00', '06:00', '07:00', '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00']
+
+timeSchedule = [00, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
 
 
 const scheduler = document.querySelector('.container')
@@ -40,7 +46,7 @@ const create = function () {
         const scheduleTimeBlock = document.createElement('div')
         scheduleTimeBlock.className = 'time-block'
         scheduleTimeBlock.id = timeSchedule[i]
-        scheduleTimeBlock.textContent = timeSchedule[i]
+        scheduleTimeBlock.textContent = `${timeSchedule[i]}:00`
         scheduleColSm1.appendChild(scheduleTimeBlock)
 
         const scheduleTimeText = document.createElement('textarea')
@@ -50,12 +56,59 @@ const create = function () {
         const saveBtn = document.createElement('button')
         saveBtn.className = 'col-sm-1 saveBtn'
         scheduleRow.appendChild(saveBtn)
+
+        // console.log(scheduleTimeBlock.id)
+
+        const expired = function () {
+            // console.log(scheduleTimeBlock.id)
+
+            // prepping match formula to prepare if statements for coloration of textarea elements
+
+            console.log(`Current hour ${hourly}:00`)
+            const whenExpires = scheduleTimeBlock.id- hourly
+            console.log(`Next scheduledd event ${scheduleTimeBlock.id}:00`)
+            console.log(`Hours until this expires ${whenExpires}:00`)
+
+
+            // if (scheduleTimeBlock.id)
+
+            // if (scheduleTimeBlock.id < hourly) {
+            //     // alert(`${scheduleTimeBlock.id} is passed due`)
+            //     scheduleTimeText.setAttribute("style", "background-color: red;");
+            // } else {
+            //     // alert(`${scheduleTimeBlock.id} is comming up`)
+            //     scheduleTimeText.setAttribute("style", "background-color: green;");
+            // }
+        }
+        expired()
+
+        var inputTask06 = document.getElementById(`${timeSchedule[i]}`).value
+        // console.log(inputTask06)
+        localStorage.setItem('Testy', JSON.stringify(inputTask06));
+
+        inputTask06 = JSON.parse(localStorage.getItem('task06'))
+
+
+        const save = document.getElementById(`${timeSchedule[i]}`).addEventListener(`${timeSchedule[i]}`, saveStorage)
     }
+    console.log(inputTask06)
+
 
 }
 create()
 
+function saveStorage() {
+    var inputTask06 = document.getElementById(`${timeSchedule[i]}`).value
+    console.log(inputTask06)
+    localStorage.setItem('Testy', JSON.stringify(inputTask06));
+    console.log(`${timeSchedule[i]}`)
+}
 
+console.log(hourly)
+
+
+
+// expired()
 // const scheduleRow = document.createElement('div')
 // scheduleRow.className = 'row'
 // scheduler.appendChild(scheduleRow)
@@ -135,7 +188,7 @@ var inputTask18 = document.getElementById('task-input-18')
 var inputTask19 = document.getElementById('task-input-19')
 var inputTask20 = document.getElementById('task-input-20')
 var inputTask21 = document.getElementById('task-input-21')
-
+console.log(inputTask20)
 
 
 var auditTime = function () {
