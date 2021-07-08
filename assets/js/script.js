@@ -16,12 +16,15 @@ const currentTime = function formatDate(date) {
 }
 
 const time = currentTime(new Date());
-console.log(time)
+// console.log(time)
 
 const hourly = time;
 // console.log(hourly)
 
-timeSchedule = [00, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
+// timeSchedule = [00, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
+
+timeSchedule = [10, 11, 12, 13, 14, 15, 16]
+
 
 const scheduler = document.querySelector('.container')
 
@@ -44,6 +47,7 @@ const create = function () {
 
         const scheduleTimeText = document.createElement('textarea')
         scheduleTimeText.className = 'col-sm-10'
+        scheduleTimeText.id = `storage-${timeSchedule[i]}`
         scheduleRow.appendChild(scheduleTimeText)
 
         const saveBtn = document.createElement('button')
@@ -59,10 +63,10 @@ const create = function () {
 
             // math formula to set 3 conditions, of passed due, within 2 hours and beyond, to set element coloration of red, yellow and green
 
-            console.log(`Current hour ${hourly}:00`)
+            // console.log(`Current hour ${hourly}:00`)
             const whenExpires = scheduleTimeBlock.id- hourly
-            console.log(`Next scheduledd event ${scheduleTimeBlock.id}:00`)
-            console.log(`Hours until this expires ${whenExpires}:00`)
+            // console.log(`Next scheduledd event ${scheduleTimeBlock.id}:00`)
+            // console.log(`Hours until this expires ${whenExpires}:00`)
 
             if (whenExpires <= 0) {
                 // alert(`${scheduleTimeBlock.id} is passed due`)
@@ -77,29 +81,49 @@ const create = function () {
         }
         expired()
 
-        var inputTask06 = document.getElementById(`${timeSchedule[i]}`).value
+        // var inputTask06 = document.getElementById(`storage-${timeSchedule[i]}`).value
+        // var inputTask07 = document.getElementById('storage-10').value
         // console.log(inputTask06)
-        localStorage.setItem('Testy', JSON.stringify(inputTask06));
+        // localStorage.setItem(`storage-${timeSchedule[i]}`, JSON.stringify(inputTask06));
 
-        inputTask06 = JSON.parse(localStorage.getItem('task06'))
+        // inputTask06 = JSON.parse(localStorage.getItem('task06'))
+        // console.log(inputTask07)
+        // console.log(inputTask06)
+        // const save = document.getElementById(`${timeSchedule[i]}`).addEventListener(`${timeSchedule[i]}`, saveStorage)
+        // console.log(inputTask06)
 
+        $(this).click(function(event) {
+            event.preventDefault()
+            var inputTask06 = document.getElementById(`storage-${timeSchedule[i]}`).value
+            console.log(inputTask06)
+            localStorage.setItem(`storage-${timeSchedule[i]}`, JSON.stringify(inputTask06));
+            console.log(inputTask06)
 
-        const save = document.getElementById(`${timeSchedule[i]}`).addEventListener(`${timeSchedule[i]}`, saveStorage)
+            task06 = JSON.parse(localStorage.getItem(`storage-${timeSchedule[i]}`)).value
+            inputTask06.textContent = `storage-${timeSchedule[i]}`;
+        })
+
+        // task06 = JSON.parse(localStorage.getItem(`storage-${timeSchedule[i]}`)).value
+        // inputTask06.textContent = task06;
     }
-    console.log(inputTask06)
-
-
+    
+    
 }
+// $(this).click(function(event) {
+//     event.preventDefault()
+//     var inputTask06 = document.getElementById(`storage-${timeSchedule[i]}`).value
+//     console.log(inputTask06)
+//     localStorage.setItem('Testy', JSON.stringify(inputTask06));
+//     console.log(inputTask06)
+// })
+
+console.log(timeSchedule)
+// console.log(`storage-${i}`)
 create()
 
-function saveStorage() {
-    var inputTask06 = document.getElementById(`${timeSchedule[i]}`).value
-    console.log(inputTask06)
-    localStorage.setItem('Testy', JSON.stringify(inputTask06));
-    console.log(`${timeSchedule[i]}`)
-}
 
-console.log(hourly)
+
+
 
 
 
@@ -183,7 +207,7 @@ var inputTask18 = document.getElementById('task-input-18')
 var inputTask19 = document.getElementById('task-input-19')
 var inputTask20 = document.getElementById('task-input-20')
 var inputTask21 = document.getElementById('task-input-21')
-console.log(inputTask20)
+// console.log(inputTask20)
 
 
 var auditTime = function () {
@@ -314,10 +338,10 @@ var militaryTime = 'hh:mm';
 var convertedTime = moment(inputTask06, militaryTime);
 
 
-console.log(convertedTime.format('HH:mm'));
+// console.log(convertedTime.format('HH:mm'));
 
-console.log(convertedTime.toNow());
-console.log(convertedTime.diff(moment(), 'hour'));
+// console.log(convertedTime.toNow());
+// console.log(convertedTime.diff(moment(), 'hour'));
 
 
 
