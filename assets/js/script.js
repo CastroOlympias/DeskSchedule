@@ -70,15 +70,18 @@ const create = function () {
             console.log(`Hours until this expires ${whenExpires}:00`)
 
 
-            // if (scheduleTimeBlock.id)
+            
 
-            // if (scheduleTimeBlock.id < hourly) {
-            //     // alert(`${scheduleTimeBlock.id} is passed due`)
-            //     scheduleTimeText.setAttribute("style", "background-color: red;");
-            // } else {
-            //     // alert(`${scheduleTimeBlock.id} is comming up`)
-            //     scheduleTimeText.setAttribute("style", "background-color: green;");
-            // }
+            if (whenExpires <= 0) {
+                // alert(`${scheduleTimeBlock.id} is passed due`)
+                scheduleTimeText.setAttribute("style", "background-color: red;");
+            }
+            else if (whenExpires <= 2)  {
+                scheduleTimeText.setAttribute("style", "background-color: yellow;");
+            } else {
+                // alert(`${scheduleTimeBlock.id} is comming up`)
+                scheduleTimeText.setAttribute("style", "background-color: green;");
+            }
         }
         expired()
 
