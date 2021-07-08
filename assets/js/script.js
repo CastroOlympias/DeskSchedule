@@ -1,3 +1,120 @@
+const currentTime = function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear(),
+        hour = d.getHours(),
+        minute = d.getMinutes();
+    second = d.getSeconds();
+
+    if (month.length < 2)
+        month = '0' + month;
+    if (day.length < 2)
+        day = '0' + day;
+
+    return [month, day, year].join('/') + ' ' + [hour, minute, second].join(':');
+}
+
+const time = currentTime(new Date());
+console.log(time)
+
+const hourly = time;
+console.log(hourly)
+
+timeSchedule = ['01:00', '02:00', '03:00', '04:00', '05:00', '06:00', '07:00', '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', ' 14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00', '00:00']
+
+
+const scheduler = document.querySelector('.container')
+
+const create = function () {
+    for (let i = 0; i < timeSchedule.length; i++) {
+        const scheduleRow = document.createElement('div')
+        scheduleRow.className = 'row'
+        scheduler.appendChild(scheduleRow)
+
+        const scheduleColSm1 = document.createElement('div')
+        scheduleColSm1.className = 'col-sm-1 hour'
+        scheduleColSm1.className = 'col-sm-1 hour'
+        scheduleRow.appendChild(scheduleColSm1)
+
+        const scheduleTimeBlock = document.createElement('div')
+        scheduleTimeBlock.className = 'time-block'
+        scheduleTimeBlock.id = timeSchedule[i]
+        scheduleTimeBlock.textContent = timeSchedule[i]
+        scheduleColSm1.appendChild(scheduleTimeBlock)
+
+        const scheduleTimeText = document.createElement('textarea')
+        scheduleTimeText.className = 'col-sm-10'
+        scheduleRow.appendChild(scheduleTimeText)
+
+        const saveBtn = document.createElement('button')
+        saveBtn.className = 'col-sm-1 saveBtn'
+        scheduleRow.appendChild(saveBtn)
+    }
+
+}
+create()
+
+
+// const scheduleRow = document.createElement('div')
+// scheduleRow.className = 'row'
+// scheduler.appendChild(scheduleRow)
+
+// const scheduleColSm1 = document.createElement('div')
+// scheduleColSm1.className = 'col-sm-1 hour'
+// scheduleColSm1.className = 'col-sm-1 hour'
+// scheduleRow.appendChild(scheduleColSm1)
+
+// const scheduleTimeBlock = document.createElement('div')
+// scheduleTimeBlock.className = 'time-block'
+// scheduleTimeBlock.textContent = timeSchedule[1]
+// scheduleColSm1.appendChild(scheduleTimeBlock)
+
+// const scheduleTimeText = document.createElement('textarea')
+// scheduleTimeText.className = 'col-sm-10'
+// scheduleRow.appendChild(scheduleTimeText)
+
+// const saveBtn = document.createElement('button')
+// saveBtn.className = 'col-sm-1 saveBtn'
+// scheduleRow.appendChild(saveBtn)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //var saveBtn = document.getElementById('saveBtn') This is an old method to save to local storage
 
@@ -21,8 +138,8 @@ var inputTask21 = document.getElementById('task-input-21')
 
 
 
-var auditTime = function() {
-    
+var auditTime = function () {
+
     inputTask06.setAttribute("style", "background-color: green;");
     //alert("short on time")
 }
@@ -31,9 +148,9 @@ var auditTime = function() {
 
 //saveBtn.addEventListener('click', function(event) { $(this).click works better to auto save after edit one click outside of box
 // This will save the userinput task item into local storage
-$(this).click(function(event) {
+$(this).click(function (event) {
     event.preventDefault();
-// Saves/Sets to local storage 06:00 - 21:00 task inputs
+    // Saves/Sets to local storage 06:00 - 21:00 task inputs
     // 06:00
     var task06 = document.getElementById('task-input-06').value;
     localStorage.setItem('task06', JSON.stringify(task06));
@@ -85,8 +202,8 @@ $(this).click(function(event) {
 });
 
 // This will make sure your tasks that are stored in local storage will be display on the webpage
-var loadTasks = function() {
-// Retrieves/Gets from local storage 06-00 - 21:00 tasks inputs
+var loadTasks = function () {
+    // Retrieves/Gets from local storage 06-00 - 21:00 tasks inputs
     // 06:00
     task06 = JSON.parse(localStorage.getItem('task06'))
     inputTask06.textContent = task06;
@@ -135,7 +252,7 @@ var loadTasks = function() {
     // 21:00
     task21 = JSON.parse(localStorage.getItem('task21'))
     inputTask21.textContent = task21;
-}  
+}
 
 loadTasks();
 
