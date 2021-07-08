@@ -21,7 +21,7 @@ const time = currentTime(new Date());
 const hourly = time;
 // console.log(hourly)
 
-timeSchedule = [06, 07,08,09,10, 11, 12, 13, 14, 15, 16,17,18,19,20]
+timeSchedule = [06, 07, 08, 09, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
 
 const scheduler = document.querySelector('.container')
 
@@ -64,14 +64,19 @@ const create = function () {
             // console.log(`Next scheduled event ${scheduleTimeBlock.id}:00`)
             // console.log(`Hours until this expires ${whenExpires}:00`)
 
-            if (whenExpires <= 0) {
+            if (whenExpires < 0) {
                 // alert(`${scheduleTimeBlock.id} is passed due`)
                 scheduleTimeText.setAttribute("style", "background-color: red;");
+            }
+            else if (whenExpires <= 0) {
+                 // alert(`${scheduleTimeBlock.id} is due now)
+                scheduleTimeText.setAttribute("style", "background-color: grey;");
             }
             else if (whenExpires <= 3) {
                 scheduleTimeText.setAttribute("style", "background-color: yellow;");
                 // alert(`${scheduleTimeBlock.id} is coming up)
-            } else {
+            }
+            else {
                 // alert(`${scheduleTimeBlock.id} you have plenty of time`)
                 scheduleTimeText.setAttribute("style", "background-color: green;");
             }
@@ -79,16 +84,16 @@ const create = function () {
         expired()
 
         $(this).click(function () {
-           
+
             taskValue = document.getElementById(`storage-${timeSchedule[i]}`).value
             localStorage.setItem(`storage-${timeSchedule[i]}`, JSON.stringify(taskValue));
             console.log(taskValue)
- 
+
         })
-      
+
         // can't seem to get the element id loop correctly so the get storage loop can take the key value pair and pair them with the right element, the first time slot storage value insterts into the last looped created element, so I will get the element, not using the template literal loop mothod. It's more code and less dry, but at least I can match the key value pair with the right element.
-        var showTasks = function() {
-            
+        var showTasks = function () {
+
             const TaskInputSix = document.getElementById(`storage-6`)
             getTaskSix = JSON.parse(localStorage.getItem(`storage-6`))
             TaskInputSix.textContent = getTaskSix;
