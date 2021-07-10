@@ -1,3 +1,37 @@
+// const currentDateTime = function formatDate(date) {
+//     var d = new Date(date),
+//         month = '' + (d.getMonth() + 1),
+//         day = '' + d.getDate(),
+//         year = d.getFullYear(),
+//         hour = d.getHours(),
+//         minute = d.getMinutes();
+//     second = d.getSeconds();
+
+//     if (month.length < 2)
+//         month = '0' + month;
+//     if (day.length < 2)
+//         day = '0' + day;
+
+//     return [month, day, year].join('/') + [- hour, minute].join(':')
+// }
+
+
+const dateTimeNow = moment().format('MMMM Do YYYY')
+console.log(moment().format('MMMM Do YYYY, h:mm:ss a'))
+
+function placeDateTime() {
+    const header = document.querySelector('#currentDay')
+
+
+    header.textContent = dateTimeNow
+}
+
+// const dateTime = currentDateTime(new Date());
+// console.log(time)
+
+// const dateHours = dateTime;
+// console.log(dateHours)
+
 const currentTime = function formatDate(date) {
     var d = new Date(date),
         month = '' + (d.getMonth() + 1),
@@ -18,8 +52,10 @@ const currentTime = function formatDate(date) {
 const time = currentTime(new Date());
 // console.log(time)
 
+placeDateTime()
+
 const hourly = time;
-// console.log(hourly)
+console.log(hourly)
 
 timeSchedule = [06, 07, 08, 09, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
 
